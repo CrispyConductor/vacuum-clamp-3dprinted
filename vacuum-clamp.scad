@@ -192,9 +192,11 @@ module VacuumClamp(
                     cylinder(r=locatingHoleDiameter/2, h=1000, $fn=30);
             };
         }
+        locatingPinY = size[1] + locatingHoleOD / 2;
+        echo("First vacuum hole to locating pin center offset", [ size[0] / 2 - holesStartX, locatingPinY - holesStartY ]);
         if (locatingPins) {
             for (x = locatingHolePositions)
-                translate([ x + size[0] / 2, size[1] + locatingHoleOD / 2, 0 ])
+                translate([ x + size[0] / 2, locatingPinY, 0 ])
                     LocatingPinHole();
         }
     }
